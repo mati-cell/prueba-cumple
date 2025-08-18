@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "node cumples.js"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "googleapis": "^154.0.0",
+    "nodemailer": "^7.0.5"
+  }
+}

@@ -1,0 +1,41 @@
+name: Enviar cumple diarios
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # todos los días a las 09:00 UTC (ajusta si quieres otra hora)
+  workflow_dispatch: {} # permite ejecutar manualmente desde Actions
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+
+      - name: Asegurar credentials.json (usa archivo en repo si existe, si no usa secret base64)
+        run: |
+          if [ -f credentials.json ]; then
+            echo "credentials.json ya existe en el repo"
+          else
+            if [ -z "$CREDENTIALS_JSON" ]; then
+              echo "CREDENTIALS_JSON no proporcionado y credentials.json no existe -> abortando"; exit 1
+            fi
+            echo "$CREDENTIALS_JSON" | base64 --decode > credentials.json
+          fi
+        env:
+          CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
+
+      - name: Ejecutar script
+        run: node ./cumples.js
+        env:
+          # Valores no sensibles rellenados desde cumples.js
+          EMAIL_REMITENTE: 'uruguay@betar.org.il'
+          SPREADSHEET_ID: '1duEAzFEHCoT8Z4-Y2DWmwnCVrtmuxayJYsaGrqCqmkE'
+          # Valores sensibles: proveer como Secrets en GitHub
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          IMG_URL: ${{ secrets.IMG_URL }}
+          # Si no pones IMG_URL como secret, el script ya tiene una URL fallback
+          
