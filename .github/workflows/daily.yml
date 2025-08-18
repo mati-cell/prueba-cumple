@@ -2,7 +2,7 @@ name: Enviar cumple diarios
 
 on:
   schedule:
-    - cron: '0 13 * * *' # todos los días a las 10:00 en Uruguay (UTC-3)
+    - cron: '0 12 * * *' # todos los días a las 09:00 en Uruguay (UTC-3)
   workflow_dispatch: {} # permite ejecutar manualmente desde Actions
 
 jobs:
