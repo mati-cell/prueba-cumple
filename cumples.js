@@ -17,8 +17,8 @@ for (const name of possibleNames) {
   }
 }
 const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json');
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID || '1duEAzFEHCoT8Z4-Y2DWmwnCVrtmuxayJYsaGrqCqmkE'; // puedes sobreescribir con env var
-const SHEET_NAME = 'Respuestas de formulario 1'; // Nombre de la hoja según la imagen
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID || '1Kw7kgg4ModMLgDHrsoAE9FxwhiHRWjUxKq7L86hh9pM'; // puedes sobreescribir con env var
+const SHEET_NAME = process.env.SHEET_NAME || 'Base automatica'; // Nombre de la hoja según la imagen
 
 // Fecha de hoy
 const hoy = new Date();

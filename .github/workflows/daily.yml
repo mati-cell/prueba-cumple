@@ -33,7 +33,8 @@ jobs:
         env:
           # Valores no sensibles rellenados desde cumples.js
           EMAIL_REMITENTE: 'uruguay@betar.org.il'
-          SPREADSHEET_ID: '1duEAzFEHCoT8Z4-Y2DWmwnCVrtmuxayJYsaGrqCqmkE'
+          SPREADSHEET_ID: '1Kw7kgg4ModMLgDHrsoAE9FxwhiHRWjUxKq7L86hh9pM'
+          SHEET_NAME: 'Base automatica'
           # Valores sensibles: proveer como Secrets en GitHub
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           IMG_URL: ${{ secrets.IMG_URL }}
