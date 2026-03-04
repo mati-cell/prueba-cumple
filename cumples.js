@@ -72,8 +72,8 @@ async function getSheetData() {
      const row = rows[i];
      const obj = {};
      headers.forEach((h, idx) => obj[h] = row[idx]);
-     const nombre = obj['Nombre y Apellido'];
-     const email = obj['Mail de contacto'];
+     const nombre = obj['Nombre'];
+     const email = obj['Correo'];
      const fecha = obj['Fecha de nacimiento'];
 
     if (!fecha || !email || !nombre) continue;
